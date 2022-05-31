@@ -15,7 +15,7 @@ def sendMessage(apiNumber,target,message):
     getUnix = calendar.timegm(d.utctimetuple())
     apiData = {"app": {"id": apiNumber,"time": getUnix,"data": {"recipient": {"id": target,},"message": [{"time": getUnix,"type": "text","value": message}]}}}
     ok = r.post("https://whapi.io/api/send", json=apiData)
-    return "success sent +"+target # "["+ok.status_code+"] ["+getUnix+"] ["+ ok.content+"]"
+    print("["+str(ok.status_code)+"] ["+str(getUnix)+"] ["+str(ok.content)+"]") # "success sent +"+target 
 
 with open("victims.txt", "r") as a_file:
   for line in a_file:
